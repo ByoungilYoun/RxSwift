@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class PhotoSelectionViewController  : UIViewController {
   
@@ -15,8 +16,16 @@ class PhotoSelectionViewController  : UIViewController {
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .red 
+    view.backgroundColor = .white
+    populatePhotos()
   }
   
   //MARK: - Functions
+  private func populatePhotos() {
+    PHPhotoLibrary.requestAuthorization { status in
+      if status == .authorized {
+        // access the photos from photo library
+      } 
+    }
+  }
 }
