@@ -50,18 +50,38 @@ import RxSwift
 //subscription4.dispose() // 메모리 릭이 발생하지 않도록 dispose(처분) 을 해줘야한다.
 
 // dispose 를 좋게 쓰는 방법 1 - disposeBag 프로퍼티를 생성해서 사용
-let disposeBag = DisposeBag()
-
-Observable.of("A","B","C")
-  .subscribe {
-    print($0)
-  }.disposed(by: disposeBag)
+//let disposeBag = DisposeBag()
+//
+//Observable.of("A","B","C")
+//  .subscribe {
+//    print($0)
+//  }.disposed(by: disposeBag)
 
 // dispose 를 좋게 쓰는 방법 2 - create function 사용
-Observable<String>.create { observer in
-  observer.onNext("A")
-  observer.onCompleted()
-  observer.onNext("?") // 위에 onCompleted 뒤에 "?" 는 프린트가 되지 않는다.
-  return Disposables.create()
-}.subscribe(onNext: {print($0)}, onError: {print($0)}, onCompleted: {print("Completed")}, onDisposed: {print("Disposed")})
-.disposed(by: disposeBag)
+//Observable<String>.create { observer in
+//  observer.onNext("A")
+//  observer.onCompleted()
+//  observer.onNext("?") // 위에 onCompleted 뒤에 "?" 는 프린트가 되지 않는다.
+//  return Disposables.create()
+//}.subscribe(onNext: {print($0)}, onError: {print($0)}, onCompleted: {print("Completed")}, onDisposed: {print("Disposed")})
+//.disposed(by: disposeBag)
+
+//-----------------------------------------------------------------------------------------------------------
+// Subjects - 옵저버블이자 옵저버 역할을 한다.
+
+// 1. Publish Subjects
+let disposeBag = DisposeBag()
+
+let subject = PublishSubject<String>()
+
+subject.onNext("Issue 1")
+
+subject.subscribe { event in
+  print(event)
+}
+
+subject.onNext("Issue 2")
+subject.onNext("Issue 3")
+//subject.dispose()
+//subject.onCompleted()
+subject.onNext("Issue 4")
