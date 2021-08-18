@@ -69,19 +69,32 @@ import RxSwift
 //-----------------------------------------------------------------------------------------------------------
 // Subjects - 옵저버블이자 옵저버 역할을 한다.
 
-// 1. Publish Subjects
 let disposeBag = DisposeBag()
 
-let subject = PublishSubject<String>()
+// 1. Publish Subjects
 
-subject.onNext("Issue 1")
+//let subject = PublishSubject<String>()
+//
+//subject.onNext("Issue 1")
+//
+//subject.subscribe { event in
+//  print(event)
+//}
+//
+//subject.onNext("Issue 2")
+//subject.onNext("Issue 3")
+////subject.dispose()
+////subject.onCompleted()
+//subject.onNext("Issue 4")
+
+// 2. Behavior Subjects - initial value 가 있어야한다. , 하나의 초기값을 가지고 있어야 하고 초기값을 가지고 있는 상태이기 때문에 초기 값으로 next이벤트로 값이 전달되면서 시작. 구독을 시작했을때 직전의 값을 전달 받고 시작한다. 
+
+let subject = BehaviorSubject(value: "Initial Value")
+
+subject.onNext("Last Issue")
 
 subject.subscribe { event in
   print(event)
 }
 
-subject.onNext("Issue 2")
-subject.onNext("Issue 3")
-//subject.dispose()
-//subject.onCompleted()
-subject.onNext("Issue 4")
+subject.onNext("Issue 1")
