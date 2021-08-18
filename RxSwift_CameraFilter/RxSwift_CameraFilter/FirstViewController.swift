@@ -46,6 +46,7 @@ class FirstViewController: UIViewController {
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(clickPlus))
     navigationItem.title = "Camera Filter"
     navigationController?.navigationBar.prefersLargeTitles = true
+    navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : UIColor.black]
     
     [myImageView, myButton].forEach {
       view.addSubview($0)
