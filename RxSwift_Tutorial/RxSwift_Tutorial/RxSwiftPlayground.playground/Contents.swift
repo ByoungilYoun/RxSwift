@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import RxCocoa
 
 
 //let observable = Observable.just(1)
@@ -101,21 +102,41 @@ let disposeBag = DisposeBag()
 
 // 3. Replay Subjects
 
-let subject = ReplaySubject<String>.create(bufferSize: 2) // 2개의 가장 마지막 이벤트를 실행한다. bufferSize 에 해당하는 갯수만큼 마지막 호출
-subject.onNext("Issue 1")
-subject.onNext("Issue 2")
-subject.onNext("Issue 3")
+//let subject = ReplaySubject<String>.create(bufferSize: 2) // 2개의 가장 마지막 이벤트를 실행한다. bufferSize 에 해당하는 갯수만큼 마지막 호출
+//subject.onNext("Issue 1")
+//subject.onNext("Issue 2")
+//subject.onNext("Issue 3")
+//
+//subject.subscribe {
+//  print($0)
+//}.disposed(by: disposeBag)
+//
+//subject.onNext("Issue 4")
+//subject.onNext("Issue 5")
+//subject.onNext("Issue 6")
+//
+//print("[Subscription 2]")
+//
+//subject.subscribe {
+//  print($0)
+//}.disposed(by: disposeBag)
 
-subject.subscribe {
-  print($0)
-}.disposed(by: disposeBag)
+// 4. BehaviorRelay
 
-subject.onNext("Issue 4")
-subject.onNext("Issue 5")
-subject.onNext("Issue 6")
+let relay = BehaviorRelay(value: ["Item 1"])
 
-print("[Subscription 2]")
+//relay.accept(relay.value + ["Item 2"])
 
-subject.subscribe {
-  print($0)
-}.disposed(by: disposeBag)
+var value = relay.value
+value.append("Item 2")
+value.append("Item 3")
+
+relay.accept(value)
+
+relay.asObservable()
+  .subscribe {
+    print($0)
+  }
+
+//relay.value = "Hello World" // 바꿀수 없다.
+//relay.accept("Hello World")
