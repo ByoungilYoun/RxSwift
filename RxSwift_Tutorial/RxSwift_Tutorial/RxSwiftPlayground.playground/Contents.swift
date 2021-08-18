@@ -87,14 +87,35 @@ let disposeBag = DisposeBag()
 ////subject.onCompleted()
 //subject.onNext("Issue 4")
 
-// 2. Behavior Subjects - initial value 가 있어야한다. , 하나의 초기값을 가지고 있어야 하고 초기값을 가지고 있는 상태이기 때문에 초기 값으로 next이벤트로 값이 전달되면서 시작. 구독을 시작했을때 직전의 값을 전달 받고 시작한다. 
+// 2. Behavior Subjects - initial value 가 있어야한다. , 하나의 초기값을 가지고 있어야 하고 초기값을 가지고 있는 상태이기 때문에 초기 값으로 next이벤트로 값이 전달되면서 시작. 구독을 시작했을때 직전의 값을 전달 받고 시작한다.
 
-let subject = BehaviorSubject(value: "Initial Value")
+//let subject = BehaviorSubject(value: "Initial Value")
+//
+//subject.onNext("Last Issue")
+//
+//subject.subscribe { event in
+//  print(event)
+//}
+//
+//subject.onNext("Issue 1")
 
-subject.onNext("Last Issue")
+// 3. Replay Subjects
 
-subject.subscribe { event in
-  print(event)
-}
-
+let subject = ReplaySubject<String>.create(bufferSize: 2) // 2개의 가장 마지막 이벤트를 실행한다. bufferSize 에 해당하는 갯수만큼 마지막 호출
 subject.onNext("Issue 1")
+subject.onNext("Issue 2")
+subject.onNext("Issue 3")
+
+subject.subscribe {
+  print($0)
+}.disposed(by: disposeBag)
+
+subject.onNext("Issue 4")
+subject.onNext("Issue 5")
+subject.onNext("Issue 6")
+
+print("[Subscription 2]")
+
+subject.subscribe {
+  print($0)
+}.disposed(by: disposeBag)
