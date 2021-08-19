@@ -87,11 +87,11 @@ class FirstViewController: UIViewController {
       return
     }
     
-    FilterService().applyFilter(to: sourceImage) { filteredImage in
+    FilterService().applyFilter(to: sourceImage).subscribe(onNext : { filteredImage in
       DispatchQueue.main.async {
         self.myImageView.image = filteredImage
       }
-    }
+    }).disposed(by: disposeBag)
   }
 }
 
