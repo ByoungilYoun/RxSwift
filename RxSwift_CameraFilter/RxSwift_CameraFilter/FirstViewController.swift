@@ -76,7 +76,7 @@ class FirstViewController: UIViewController {
   
   //MARK: - objc func
   @objc private func clickPlus() {
-    let nav = PhotoSelectionViewController()
+    let nav = PhotosCollectionViewController()
     navigationController?.pushViewController(nav, animated: true)
   }
   

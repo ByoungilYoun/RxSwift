@@ -1,5 +1,5 @@
 //
-//  PhotoSelectionViewController.swift
+//  PhotosCollectionViewController.swift
 //  RxSwift_CameraFilter
 //
 //  Created by 윤병일 on 2021/08/19.
@@ -7,10 +7,17 @@
 
 import UIKit
 import Photos
+import RxSwift
 
-class PhotoSelectionViewController  : UIViewController {
+class PhotosCollectionViewController  : UIViewController {
   
   //MARK: - Properties
+
+  private let selectedPhotoSubject = PublishSubject<UIImage>()
+  
+  var selectedPhoto : Observable<UIImage> {
+    return selectedPhotoSubject.asObservable()
+  }
   
   private var images = [PHAsset]()
   
@@ -74,7 +81,7 @@ class PhotoSelectionViewController  : UIViewController {
 }
 
   //MARK: - extension UICollectionViewDataSource
-extension PhotoSelectionViewController : UICollectionViewDataSource {
+extension PhotosCollectionViewController : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.images.count
   }
@@ -95,12 +102,28 @@ extension PhotoSelectionViewController : UICollectionViewDataSource {
   }
 }
   //MARK: - extension UICollectionViewDelegate
-extension PhotoSelectionViewController : UICollectionViewDelegate {
-  
+extension PhotosCollectionViewController : UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let selectedAsset = self.images[indexPath.row]
+
+    PHImageManager.default().requestImage(for: selectedAsset, targetSize: CGSize(width: 300, height: 300), contentMode: .aspectFill, options: nil) { [weak self] image, info in
+      
+      guard let info = info else {return}
+      
+      let isDegradedImage = info["PHImageResultIsDegradedKey"] as! Bool
+      
+      if !isDegradedImage {
+        if let image = image {
+          self?.selectedPhotoSubject.onNext(image)
+          self?.dismiss(animated: true, completion: nil)
+        }
+      }
+    }
+  }
 }
 
   //MARK: - UICollectionViewDelegateFlowLayout
-extension PhotoSelectionViewController : UICollectionViewDelegateFlowLayout {
+extension PhotosCollectionViewController : UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: 100, height: 100)
   }
