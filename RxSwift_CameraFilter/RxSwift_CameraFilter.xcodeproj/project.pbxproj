@@ -18,6 +18,7 @@
 		0FAE9AB526CD6DC500BA4900 /* RxSwift_CameraFilterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9AB426CD6DC500BA4900 /* RxSwift_CameraFilterUITests.swift */; };
 		0FAE9AC326CD6EB500BA4900 /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9AC226CD6EB500BA4900 /* PhotosCollectionViewController.swift */; };
 		0FAE9AC626CD705E00BA4900 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0FAE9AC526CD705E00BA4900 /* SnapKit */; };
+		0FD4D90C26CEBF40009E7171 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD4D90B26CEBF40009E7171 /* FilterService.swift */; };
 		887E2C385B4C0331B61445EF /* Pods_RxSwift_CameraFilter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F394C9E180A580562042541C /* Pods_RxSwift_CameraFilter.framework */; };
 		9397FD7360144F68229DF95B /* Pods_RxSwift_CameraFilter_RxSwift_CameraFilterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6201755D87B0BFC8E4420E87 /* Pods_RxSwift_CameraFilter_RxSwift_CameraFilterUITests.framework */; };
 		F2C597D3E57DB964D0E2084F /* Pods_RxSwift_CameraFilterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B47B84AD0449FC6E1E892E9 /* Pods_RxSwift_CameraFilterTests.framework */; };
@@ -57,6 +58,7 @@
 		0FAE9AB426CD6DC500BA4900 /* RxSwift_CameraFilterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift_CameraFilterUITests.swift; sourceTree = "<group>"; };
 		0FAE9AB626CD6DC500BA4900 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FAE9AC226CD6EB500BA4900 /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		0FD4D90B26CEBF40009E7171 /* FilterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
 		117FC9841CD5B91153572F0C /* Pods-RxSwift_CameraFilter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_CameraFilter.debug.xcconfig"; path = "Target Support Files/Pods-RxSwift_CameraFilter/Pods-RxSwift_CameraFilter.debug.xcconfig"; sourceTree = "<group>"; };
 		1B47B84AD0449FC6E1E892E9 /* Pods_RxSwift_CameraFilterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_CameraFilterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E4C717BA8D12B509E51443B /* Pods-RxSwift_CameraFilter-RxSwift_CameraFilterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_CameraFilter-RxSwift_CameraFilterUITests.release.xcconfig"; path = "Target Support Files/Pods-RxSwift_CameraFilter-RxSwift_CameraFilterUITests/Pods-RxSwift_CameraFilter-RxSwift_CameraFilterUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				0FAE9A9226CD6DC200BA4900 /* AppDelegate.swift */,
 				0FAE9A9426CD6DC200BA4900 /* SceneDelegate.swift */,
+				0FD4D90B26CEBF40009E7171 /* FilterService.swift */,
 				0F93B2E326CE633800FADD42 /* PhotoCollectionViewCell.swift */,
 				0FAE9A9626CD6DC200BA4900 /* FirstViewController.swift */,
 				0FAE9AC226CD6EB500BA4900 /* PhotosCollectionViewController.swift */,
@@ -423,6 +426,7 @@
 				0FAE9AC326CD6EB500BA4900 /* PhotosCollectionViewController.swift in Sources */,
 				0F93B2E426CE633800FADD42 /* PhotoCollectionViewCell.swift in Sources */,
 				0FAE9A9726CD6DC200BA4900 /* FirstViewController.swift in Sources */,
+				0FD4D90C26CEBF40009E7171 /* FilterService.swift in Sources */,
 				0FAE9A9326CD6DC200BA4900 /* AppDelegate.swift in Sources */,
 				0FAE9A9526CD6DC200BA4900 /* SceneDelegate.swift in Sources */,
 			);

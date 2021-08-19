@@ -37,11 +37,6 @@ class FirstViewController: UIViewController {
     super.viewDidLoad()
     configureUI()
   }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    checkIfMyButtonShouldBeHidden()
-  }
 
   //MARK: - Functions
   private func configureUI() {
@@ -69,12 +64,9 @@ class FirstViewController: UIViewController {
     }
   }
   
-  private func checkIfMyButtonShouldBeHidden() {
-    if myImageView.image == nil {
-      myButton.isHidden = true
-    } else {
-      myButton.isHidden = false
-    }
+  private func updateUI(with image : UIImage) {
+      self.myImageView.image = image
+      self.myButton.isHidden = false
   }
   
   //MARK: - objc func
@@ -82,14 +74,24 @@ class FirstViewController: UIViewController {
     let nav = PhotosCollectionViewController()
     
     nav.selectedPhoto.subscribe { [weak self] photo in
-      self?.myImageView.image = photo
+      DispatchQueue.main.async {
+        self?.updateUI(with: photo)
+      }
     }.disposed(by: disposeBag)
     
     navigationController?.pushViewController(nav, animated: true)
   }
   
   @objc private func buttonTap() {
+    guard let sourceImage = self.myImageView.image else {
+      return
+    }
     
+    FilterService().applyFilter(to: sourceImage) { filteredImage in
+      DispatchQueue.main.async {
+        self.myImageView.image = filteredImage
+      }
+    }
   }
 }
 
