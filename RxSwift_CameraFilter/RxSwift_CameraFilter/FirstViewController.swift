@@ -15,6 +15,7 @@ class FirstViewController: UIViewController {
   let myImageView : UIImageView = {
     let v = UIImageView()
     v.contentMode = .scaleAspectFill
+    v.clipsToBounds = true
     v.backgroundColor = .white
     return v
   }()
@@ -28,6 +29,8 @@ class FirstViewController: UIViewController {
     bt.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
     return bt
   }()
+  
+  let disposeBag = DisposeBag()
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -77,6 +80,11 @@ class FirstViewController: UIViewController {
   //MARK: - objc func
   @objc private func clickPlus() {
     let nav = PhotosCollectionViewController()
+    
+    nav.selectedPhoto.subscribe { [weak self] photo in
+      self?.myImageView.image = photo
+    }.disposed(by: disposeBag)
+    
     navigationController?.pushViewController(nav, animated: true)
   }
   

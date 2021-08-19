@@ -115,7 +115,7 @@ extension PhotosCollectionViewController : UICollectionViewDelegate {
       if !isDegradedImage {
         if let image = image {
           self?.selectedPhotoSubject.onNext(image)
-          self?.dismiss(animated: true, completion: nil)
+          self?.navigationController?.popViewController(animated: true)
         }
       }
     }
