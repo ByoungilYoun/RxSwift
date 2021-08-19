@@ -12,13 +12,7 @@ class PhotoSelectionViewController  : UIViewController {
   
   //MARK: - Properties
   
-  private var images = [PHAsset]() {
-    didSet {
-      DispatchQueue.main.async {
-        self.collectionView.reloadData()
-      }
-    }
-  }
+  private var images = [PHAsset]()
   
   let collectionView : UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -49,7 +43,7 @@ class PhotoSelectionViewController  : UIViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.backgroundColor = .white
-    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
     view.addSubview(collectionView)
     
     collectionView.snp.makeConstraints {
@@ -71,8 +65,9 @@ class PhotoSelectionViewController  : UIViewController {
         }
         
         self.images.reverse()
-        print("하하", self.images)
-//        self.collectionView.reloadData()
+        DispatchQueue.main.async {
+          self.collectionView.reloadData()
+        }
       } 
     }
   }
@@ -81,16 +76,36 @@ class PhotoSelectionViewController  : UIViewController {
   //MARK: - extension UICollectionViewDataSource
 extension PhotoSelectionViewController : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return images.count
+    return self.images.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    cell.backgroundColor = .blue
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
+      fatalError("PhotoCollectionViewCell is not found")
+    }
+    let asset = self.images[indexPath.row]
+    let manager = PHImageManager.default()
+    manager.requestImage(for: asset, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFill, options: nil) { image, _ in
+      DispatchQueue.main.async {
+        cell.imageView.image = image
+      }
+    }
+
     return cell
   }
 }
   //MARK: - extension UICollectionViewDelegate
 extension PhotoSelectionViewController : UICollectionViewDelegate {
   
+}
+
+  //MARK: - UICollectionViewDelegateFlowLayout
+extension PhotoSelectionViewController : UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 100, height: 100)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+  }
 }

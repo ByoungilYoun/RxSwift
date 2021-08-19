@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F93B2E426CE633800FADD42 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93B2E326CE633800FADD42 /* PhotoCollectionViewCell.swift */; };
 		0FAE9A9326CD6DC200BA4900 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9A9226CD6DC200BA4900 /* AppDelegate.swift */; };
 		0FAE9A9526CD6DC200BA4900 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9A9426CD6DC200BA4900 /* SceneDelegate.swift */; };
 		0FAE9A9726CD6DC200BA4900 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9A9626CD6DC200BA4900 /* FirstViewController.swift */; };
@@ -16,7 +17,7 @@
 		0FAE9AAA26CD6DC500BA4900 /* RxSwift_CameraFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9AA926CD6DC500BA4900 /* RxSwift_CameraFilterTests.swift */; };
 		0FAE9AB526CD6DC500BA4900 /* RxSwift_CameraFilterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9AB426CD6DC500BA4900 /* RxSwift_CameraFilterUITests.swift */; };
 		0FAE9AC326CD6EB500BA4900 /* PhotoSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9AC226CD6EB500BA4900 /* PhotoSelectionViewController.swift */; };
-		0FAE9AC626CD705E00BA4900 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 0FAE9AC526CD705E00BA4900 /* SwiftPackageProductDependency */; };
+		0FAE9AC626CD705E00BA4900 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0FAE9AC526CD705E00BA4900 /* SnapKit */; };
 		887E2C385B4C0331B61445EF /* Pods_RxSwift_CameraFilter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F394C9E180A580562042541C /* Pods_RxSwift_CameraFilter.framework */; };
 		9397FD7360144F68229DF95B /* Pods_RxSwift_CameraFilter_RxSwift_CameraFilterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6201755D87B0BFC8E4420E87 /* Pods_RxSwift_CameraFilter_RxSwift_CameraFilterUITests.framework */; };
 		F2C597D3E57DB964D0E2084F /* Pods_RxSwift_CameraFilterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B47B84AD0449FC6E1E892E9 /* Pods_RxSwift_CameraFilterTests.framework */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F93B2E326CE633800FADD42 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0FAE9A8F26CD6DC200BA4900 /* RxSwift_CameraFilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwift_CameraFilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FAE9A9226CD6DC200BA4900 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FAE9A9426CD6DC200BA4900 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FAE9AC626CD705E00BA4900 /* BuildFile in Frameworks */,
+				0FAE9AC626CD705E00BA4900 /* SnapKit in Frameworks */,
 				887E2C385B4C0331B61445EF /* Pods_RxSwift_CameraFilter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +124,7 @@
 			children = (
 				0FAE9A9226CD6DC200BA4900 /* AppDelegate.swift */,
 				0FAE9A9426CD6DC200BA4900 /* SceneDelegate.swift */,
+				0F93B2E326CE633800FADD42 /* PhotoCollectionViewCell.swift */,
 				0FAE9A9626CD6DC200BA4900 /* FirstViewController.swift */,
 				0FAE9AC226CD6EB500BA4900 /* PhotoSelectionViewController.swift */,
 				0FAE9A9826CD6DC200BA4900 /* Main.storyboard */,
@@ -160,7 +163,6 @@
 				38B0E47017A535091EA0D1FB /* Pods-RxSwift_CameraFilterTests.debug.xcconfig */,
 				C93A0229329766322682842C /* Pods-RxSwift_CameraFilterTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -193,7 +195,7 @@
 			);
 			name = RxSwift_CameraFilter;
 			packageProductDependencies = (
-				0FAE9AC526CD705E00BA4900 /* SwiftPackageProductDependency */,
+				0FAE9AC526CD705E00BA4900 /* SnapKit */,
 			);
 			productName = RxSwift_CameraFilter;
 			productReference = 0FAE9A8F26CD6DC200BA4900 /* RxSwift_CameraFilter.app */;
@@ -270,7 +272,7 @@
 			);
 			mainGroup = 0FAE9A8626CD6DC200BA4900;
 			packageReferences = (
-				0FAE9AC426CD705E00BA4900 /* RemoteSwiftPackageReference */,
+				0FAE9AC426CD705E00BA4900 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 0FAE9A9026CD6DC200BA4900 /* Products */;
 			projectDirPath = "";
@@ -419,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FAE9AC326CD6EB500BA4900 /* PhotoSelectionViewController.swift in Sources */,
+				0F93B2E426CE633800FADD42 /* PhotoCollectionViewCell.swift in Sources */,
 				0FAE9A9726CD6DC200BA4900 /* FirstViewController.swift in Sources */,
 				0FAE9A9326CD6DC200BA4900 /* AppDelegate.swift in Sources */,
 				0FAE9A9526CD6DC200BA4900 /* SceneDelegate.swift in Sources */,
@@ -762,7 +765,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0FAE9AC426CD705E00BA4900 /* RemoteSwiftPackageReference */ = {
+		0FAE9AC426CD705E00BA4900 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -773,9 +776,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0FAE9AC526CD705E00BA4900 /* SwiftPackageProductDependency */ = {
+		0FAE9AC526CD705E00BA4900 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0FAE9AC426CD705E00BA4900 /* RemoteSwiftPackageReference */;
+			package = 0FAE9AC426CD705E00BA4900 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
