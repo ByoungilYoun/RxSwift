@@ -23,13 +23,24 @@ import PlaygroundSupport
 
 // 2. elementAt filter
 
-let strikes = PublishSubject<String>()
+//let strikes = PublishSubject<String>()
+//let disposeBag = DisposeBag()
+//
+//strikes.element(at: 2).subscribe(onNext : { _ in
+//  print("You are out!")
+//}).disposed(by: disposeBag) // 인덱스가 2번째 이후에 프린트가 된다.
+//
+//strikes.onNext("X")
+//strikes.onNext("X")
+//strikes.onNext("X") // 이때 You are out! 이 프린트 됨
+
+// 3. filter
+
 let disposeBag = DisposeBag()
 
-strikes.element(at: 2).subscribe(onNext : { _ in
-  print("You are out!")
-}).disposed(by: disposeBag) // 인덱스가 2번째 이후에 프린트가 된다.
-
-strikes.onNext("X")
-strikes.onNext("X")
-strikes.onNext("X") // 이때 You are out! 이 프린트 됨 
+Observable.of(1,2,3,4,5,6,7)
+  .filter {
+    $0 % 2 == 0
+  }.subscribe(onNext : {
+    print($0) // 2, 4, 6 가 프린트된다.
+  }).disposed(by: disposeBag)
