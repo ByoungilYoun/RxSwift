@@ -85,9 +85,26 @@ let disposeBag = DisposeBag()
 
 // 8. take(while : )
 
-Observable.of(2,4,6,7,8,10)
-  .take(while: {
-    return $0 % 2 == 0
-  }).subscribe(onNext : {
-    print($0) // 2,4,6 까지 가다가 7에서 막혀서 7전까지만 프린트 된다.
+//Observable.of(2,4,6,7,8,10)
+//  .take(while: {
+//    return $0 % 2 == 0
+//  }).subscribe(onNext : {
+//    print($0) // 2,4,6 까지 가다가 7에서 막혀서 7전까지만 프린트 된다.
+//  }).disposed(by: disposeBag)
+
+// 9 take(until : )
+
+let subject = PublishSubject<String>()
+let trigger = PublishSubject<String>()
+
+subject.take(until: trigger) // trigger 에 값이 들어가면 그 전 값들까지만 불린다.
+  .subscribe(onNext : {
+    print($0)
   }).disposed(by: disposeBag)
+
+subject.onNext("1")
+subject.onNext("2")
+
+trigger.onNext("X")
+
+subject.onNext("3")
