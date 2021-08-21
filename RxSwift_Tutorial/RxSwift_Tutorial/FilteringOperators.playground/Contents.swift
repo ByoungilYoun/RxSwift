@@ -59,7 +59,7 @@ let disposeBag = DisposeBag()
 //    print($0)
 //  }).disposed(by: disposeBag)
 
-// skip(until : )
+// 6. skip(until : )
 
 let subject = PublishSubject<String>()
 let trigger = PublishSubject<String>()
@@ -69,8 +69,16 @@ subject.skip(until: trigger) // trigger 에 값이 들어갈때까지 subject �
     print($0)
   }).disposed(by: disposeBag)
 
-subject.onNext("A")
-subject.onNext("B")
+subject.onNext("A") // 프린트 안됨
+subject.onNext("B") // 프린트 안됨
 
-trigger.onNext("X")
+trigger.onNext("X") // trigger 에 값을 넣어준뒤 밑에 C 가 프린트됨
 subject.onNext("C")
+
+// 7. take
+
+Observable.of(1,2,3,4,5,6)
+  .take(3) // 처음부터 3개까지만 가져온다.
+  .subscribe(onNext : {
+    print($0)
+  }).disposed(by: disposeBag)
