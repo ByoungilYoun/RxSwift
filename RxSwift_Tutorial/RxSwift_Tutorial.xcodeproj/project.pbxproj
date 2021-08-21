@@ -39,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0F5A43D126CD4B8A00926CDF /* RxSwiftPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RxSwiftPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		0F5AD32B26D13B92007DE00F /* FilteringOperators.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FilteringOperators.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		0FFA9E1726CD44FB00A9B57B /* RxSwift_Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwift_Tutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FFA9E1A26CD44FB00A9B57B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FFA9E1C26CD44FB00A9B57B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				0F5A43D126CD4B8A00926CDF /* RxSwiftPlayground.playground */,
+				0F5AD32B26D13B92007DE00F /* FilteringOperators.playground */,
 				0FFA9E1A26CD44FB00A9B57B /* AppDelegate.swift */,
 				0FFA9E1C26CD44FB00A9B57B /* SceneDelegate.swift */,
 				0FFA9E1E26CD44FB00A9B57B /* ViewController.swift */,
