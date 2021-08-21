@@ -2,12 +2,12 @@ import UIKit
 import RxSwift
 import PlaygroundSupport
 
+let disposeBag = DisposeBag()
 
 // 1. ignoreElement filter
 
 //let strikes = PublishSubject<String>()
-//let disposeBag = DisposeBag()
-//
+
 //strikes
 //  .ignoreElements()
 //    .subscribe { _ in
@@ -24,8 +24,7 @@ import PlaygroundSupport
 // 2. elementAt filter
 
 //let strikes = PublishSubject<String>()
-//let disposeBag = DisposeBag()
-//
+
 //strikes.element(at: 2).subscribe(onNext : { _ in
 //  print("You are out!")
 //}).disposed(by: disposeBag) // 인덱스가 2번째 이후에 프린트가 된다.
@@ -36,11 +35,18 @@ import PlaygroundSupport
 
 // 3. filter
 
-let disposeBag = DisposeBag()
+//Observable.of(1,2,3,4,5,6,7)
+//  .filter {
+//    $0 % 2 == 0
+//  }.subscribe(onNext : {
+//    print($0) // 2, 4, 6 가 프린트된다.
+//  }).disposed(by: disposeBag)
 
-Observable.of(1,2,3,4,5,6,7)
-  .filter {
-    $0 % 2 == 0
-  }.subscribe(onNext : {
-    print($0) // 2, 4, 6 가 프린트된다.
+// 4. skip operator
+
+Observable.of("a", "b", "c", "d", "e", "f")
+  .skip(3)
+  .subscribe(onNext: {
+    print($0) // 3개를 띄어넘고 d, e, f 가 프린트 된다.
   }).disposed(by: disposeBag)
+
